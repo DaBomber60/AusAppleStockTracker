@@ -6,15 +6,19 @@ import sys
 import time
 
 model = input('Input model of iPhone to check for: [MQ9X3ZP/A] ') or 'MQ9X3ZP/A'
-postcode = input('Enter your Australian postcode: [2000] ') or '2000'
-region = ''
+region = input('Select your region:\nAU, NZ: [AU] ') or 'AU'
+postcode = input('Enter your postcode: [2000] ') or '2000'
 
 storeStock = {}
+regionPC = {
+    'AU': 4,
+    'NZ': 4
+}
 
-if len(postcode) == 4:
-    region = 'AU'
-else:
+
+if len(postcode) != regionPC[region]:
     print('Invalid postcode input')
+    sys.exit()
 
 #SIGN UP FOR A FREE TWILIO ACCOUNT HERE: https://www.twilio.com/try-twilio
 
